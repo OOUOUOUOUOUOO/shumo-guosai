@@ -89,12 +89,12 @@ def test_t_time(t):
                   bounds=[(0, 2*np.pi)])
     d1 = -result1.fun
     x1=  result1.x[0]
-    result2 = minimize(lambda x: -distance1(x[0]),  
+    result2 = minimize(lambda x: -distance2(x[0]),  
                   x0=np.array([0.0]),          
                   bounds=[(0, 2*np.pi)])
     d2 = -result2.fun
     x2= result2.x[0]
-    if np.linalg.norm(yanwu - m1)>10 and np.dot(m1-yanwu,m1-np.array([7*np.sin(x1),207-7*np.cos(x1),0]))<0 and np.dot(m1-yanwu,m1-np.array([7*np.sin(x2),207-7*np.cos(x2),0]))<0:
+    if np.linalg.norm(yanwu - m1)>10 and np.dot(m1-yanwu,m1-np.array([7*np.sin(x1),207-7*np.cos(x1),0]))<0 and np.dot(m1-yanwu,m1-np.array([7*np.sin(x2),207-7*np.cos(x2),10]))<0:
         return False
     elif d1<=10 and d2<=10:
         return True
@@ -105,4 +105,5 @@ def main():
     print (find_true_interval(test_t_time,5.1,25.1))
 
 if __name__ == "__main__":
+
     main()
